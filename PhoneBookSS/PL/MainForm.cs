@@ -22,11 +22,13 @@ namespace PhoneBookSS.PL
         public void ReloadGrid()
         {
             ContactGrid.DataSource = db.Contacts.ToList();
+            count.Text = ContactGrid.Rows.Count.ToString();
             RestyleGrid();
         }
         public void RestyleGrid()
         {
-            //autosizing
+
+                //autosizing
             ContactGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Autosize Show Btn
             ContactGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Autosize Edit
             ContactGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Autosize Delete
@@ -35,6 +37,7 @@ namespace PhoneBookSS.PL
                 ContactGrid.Columns[0].DisplayIndex = 9;
             //Rename Headers
             ContactGrid.Columns[4].HeaderText = "First Name";
+            ContactGrid.Columns[4].SortMode = DataGridViewColumnSortMode.Automatic;
             ContactGrid.Columns[5].HeaderText = "Last Name";
             ContactGrid.Columns[6].HeaderText = "Address";
             ContactGrid.Columns[8].HeaderText = "Home Phone";
@@ -64,6 +67,7 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.FirstName.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
             //LastName
@@ -71,6 +75,7 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.LastName.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
             //address
@@ -78,6 +83,7 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.Address.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
 
@@ -85,6 +91,7 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.HomePhone.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
 
@@ -92,6 +99,7 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.MobilePhone.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
 
@@ -99,49 +107,54 @@ namespace PhoneBookSS.PL
             {
                 var result = db.Contacts.Where(c => c.Email.Contains(SearchBox.Text)).ToList();
                 ContactGrid.DataSource = result;
+                count.Text = ContactGrid.Rows.Count.ToString();
                 RestyleGrid();
             }
         }
 
         private void ContactGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            int id = Convert.ToInt32(ContactGrid.Rows[e.RowIndex].Cells[3].Value.ToString());
-            // show contact infos;
-            if (e.ColumnIndex == 0)
+            if (e.RowIndex >=0)
             {
-                ShowContact contact = new ShowContact(id);               
-                contact.ShowDialog();
 
-            }
-            //Edit contact infos;
 
-            if (e.ColumnIndex ==1)
-            {
-                AddEditContact edit = new AddEditContact(this, id, "edit");            
-                edit.WindowTitle.Text = edit.Text= "Edit contact information";
-                var contact = db.Contacts.Find(id);
-                edit.FirstName.Text = contact.FirstName;
-                edit.LastName.Text = contact.LastName;
-                edit.Address.Text = contact.Address;
-                edit.HomePhone.Text = contact.HomePhone;
-                edit.MobilePhone.Text = contact.MobilePhone;
-                edit.Email.Text = contact.Email;
-                edit.AddButton.Text = "Update Contact";
-                edit.ShowDialog();         
-            }
-            if (e.ColumnIndex == 2)
-            {
-                string f = ContactGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                string l = ContactGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                DialogResult result = MessageBox.Show("Do you want to delete this contact, "+f + " " + l+" ?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                int id = Convert.ToInt32(ContactGrid.SelectedRows[0].Cells[3].Value.ToString());
+                // show contact infos;
+                if (e.ColumnIndex == 0)
                 {
+                    ShowContact contact = new ShowContact(id);
+                    contact.ShowDialog();
+
+                }
+                //Edit contact infos;
+
+                if (e.ColumnIndex == 1)
+                {
+                    AddEditContact edit = new AddEditContact(this, id, "edit");
+                    edit.WindowTitle.Text = edit.Text = "Edit contact information";
                     var contact = db.Contacts.Find(id);
-                    db.Contacts.Remove(contact);
-                    db.SaveChanges();
-                    ReloadGrid();
+                    edit.FirstName.Text = contact.FirstName;
+                    edit.LastName.Text = contact.LastName;
+                    edit.Address.Text = contact.Address;
+                    edit.HomePhone.Text = contact.HomePhone;
+                    edit.MobilePhone.Text = contact.MobilePhone;
+                    edit.Email.Text = contact.Email;
+                    edit.AddButton.Text = "Update Contact";
+                    edit.ShowDialog();
+                }
+                if (e.ColumnIndex == 2)
+                {
+                    string f = ContactGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    string l = ContactGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                    DialogResult result = MessageBox.Show("Do you want to delete this contact, " + f + " " + l + " ?", "Delete Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        var contact = db.Contacts.Find(id);
+                        db.Contacts.Remove(contact);
+                        db.SaveChanges();
+                        ReloadGrid();
+                    }
                 }
             }
         }

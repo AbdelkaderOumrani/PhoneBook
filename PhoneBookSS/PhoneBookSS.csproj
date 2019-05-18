@@ -154,6 +154,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\search-engine.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="PhoneBookDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhoneBookDB.edmx</DependentUpon>
@@ -164,8 +168,6 @@
       <DependentUpon>PhoneBookDB.edmx</DependentUpon>
       <LastGenOutput>PhoneBookDB.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\minus.png" />
-    <None Include="Resources\search-engine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

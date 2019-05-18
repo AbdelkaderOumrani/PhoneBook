@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.AddButton = new System.Windows.Forms.Button();
@@ -40,10 +41,12 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.MinimizeButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.count = new System.Windows.Forms.Label();
             this.show = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ContactGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +77,7 @@
             // 
             // ContactGrid
             // 
+            this.ContactGrid.AllowUserToAddRows = false;
             this.ContactGrid.AllowUserToDeleteRows = false;
             this.ContactGrid.AllowUserToResizeRows = false;
             this.ContactGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -85,14 +89,14 @@
             this.ContactGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ContactGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.ContactGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(146)))), ((int)(((byte)(175)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ContactGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(146)))), ((int)(((byte)(175)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ContactGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ContactGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ContactGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.show,
@@ -103,15 +107,23 @@
             this.ContactGrid.MultiSelect = false;
             this.ContactGrid.Name = "ContactGrid";
             this.ContactGrid.ReadOnly = true;
-            this.ContactGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(196)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(146)))), ((int)(((byte)(175)))));
-            this.ContactGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ContactGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ContactGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ContactGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(196)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(146)))), ((int)(((byte)(175)))));
+            this.ContactGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.ContactGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ContactGrid.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.ContactGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ContactGrid.Size = new System.Drawing.Size(776, 304);
+            this.ContactGrid.Size = new System.Drawing.Size(887, 392);
             this.ContactGrid.TabIndex = 1;
             this.ContactGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContactGrid_CellContentClick);
             // 
@@ -175,37 +187,12 @@
             this.MinimizeButton.FlatAppearance.BorderSize = 0;
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MinimizeButton.Image = global::PhoneBookSS.Properties.Resources.minus;
-            this.MinimizeButton.Location = new System.Drawing.Point(721, 12);
+            this.MinimizeButton.Location = new System.Drawing.Point(832, 12);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(25, 25);
             this.MinimizeButton.TabIndex = 7;
             this.MinimizeButton.UseVisualStyleBackColor = true;
             this.MinimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
-            // 
-            // show
-            // 
-            this.show.HeaderText = "Show";
-            this.show.Image = global::PhoneBookSS.Properties.Resources.search_engine;
-            this.show.Name = "show";
-            this.show.ReadOnly = true;
-            this.show.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.show.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Edit";
-            this.Column7.Image = global::PhoneBookSS.Properties.Resources.icons8_pencil_24;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Delete";
-            this.Column8.Image = global::PhoneBookSS.Properties.Resources.icons8_delete_24;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // CloseButton
             // 
@@ -213,19 +200,66 @@
             this.CloseButton.FlatAppearance.BorderSize = 0;
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Image = global::PhoneBookSS.Properties.Resources.error__1_;
-            this.CloseButton.Location = new System.Drawing.Point(763, 12);
+            this.CloseButton.Location = new System.Drawing.Point(874, 12);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(25, 25);
             this.CloseButton.TabIndex = 1;
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(438, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 27);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Total : ";
+            // 
+            // count
+            // 
+            this.count.AutoSize = true;
+            this.count.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold);
+            this.count.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.count.Location = new System.Drawing.Point(512, 54);
+            this.count.Name = "count";
+            this.count.Size = new System.Drawing.Size(0, 27);
+            this.count.TabIndex = 8;
+            // 
+            // show
+            // 
+            this.show.HeaderText = "";
+            this.show.Image = global::PhoneBookSS.Properties.Resources.search_engine;
+            this.show.Name = "show";
+            this.show.ReadOnly = true;
+            this.show.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "";
+            this.Column7.Image = global::PhoneBookSS.Properties.Resources.icons8_pencil_24;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "";
+            this.Column8.Image = global::PhoneBookSS.Properties.Resources.icons8_delete_24;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(49)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(911, 538);
+            this.Controls.Add(this.count);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.MinimizeButton);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.FilterBy);
@@ -252,12 +286,14 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridView ContactGrid;
-        private System.Windows.Forms.DataGridViewImageColumn show;
-        private System.Windows.Forms.DataGridViewImageColumn Column7;
-        private System.Windows.Forms.DataGridViewImageColumn Column8;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.ComboBox FilterBy;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Button MinimizeButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label count;
+        private System.Windows.Forms.DataGridViewImageColumn show;
+        private System.Windows.Forms.DataGridViewImageColumn Column7;
+        private System.Windows.Forms.DataGridViewImageColumn Column8;
     }
 }

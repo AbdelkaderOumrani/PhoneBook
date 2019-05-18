@@ -33,7 +33,7 @@ namespace PhoneBookSS.PL
 
         private void CopyButton_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(FirstName.Text+" "+LastName + ", " +Address.Text
+            Clipboard.SetText(FirstName.Text+" "+LastName.Text + ", " +Address.Text
                 + ", " +HomePhone.Text + ", " +MobilePhone.Text + ", " +Email.Text);
 
         }
